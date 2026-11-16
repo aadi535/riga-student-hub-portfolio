@@ -1,0 +1,32 @@
+# External Neon PostgreSQL; do not use Render's expiring free database.
+services:
+  - type: web
+    name: riga-student-hub
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: MANAGER_USERNAME
+        value: manager
+      - key: MANAGER_PASSWORD_HASH
+        sync: false
+      - key: RATE_LIMIT_SALT
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: PUBLIC_URL
+        sync: false
+      - key: ALLOWED_ORIGIN
+        sync: false
+      - key: NOTIFICATION_TO
+        sync: false
+      - key: NOTIFICATION_FROM
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false

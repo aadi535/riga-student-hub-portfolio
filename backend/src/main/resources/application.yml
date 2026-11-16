@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        http-only: true
+        secure: ${COOKIE_SECURE:true}
+        same-site: lax
+  tomcat:
+    max-http-form-post-size: 16KB
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/studenthub}
+    username: ${DATABASE_USERNAME:studenthub}
+    password: ${DATABASE_PASSWORD}
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+hub:
+  manager-username: ${MANAGER_USERNAME:manager}
+  manager-password-hash: ${MANAGER_PASSWORD_HASH}
+  allowed-origin: ${ALLOWED_ORIGIN:http://localhost:5173}
+  rate-limit-salt: ${RATE_LIMIT_SALT}
+  notification-to: ${NOTIFICATION_TO:}
+  notification-from: ${NOTIFICATION_FROM:}
+  resend-api-key: ${RESEND_API_KEY:}
+  public-url: ${PUBLIC_URL:http://localhost:8080}
+  notifications-enabled: ${NOTIFICATIONS_ENABLED:true}
